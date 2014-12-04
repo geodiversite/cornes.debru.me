@@ -1,10 +1,11 @@
 <BOUCLE_un_article(ARTICLES){id_article}><div class="descriptif_window">
-	<h3>#_un_article:TITRE</h3>
 	<BOUCLE_imaxe(DOCUMENTS){extension !IN 'kml','kmz'}{id_article}{vu=non}{0,1}>
 	[(#SET{logo,#LOGO_DOCUMENT|image_reduire{225}|extraire_attribut{src}|url_absolue})]
 	[(#EXTENSION|=={mp3}|oui)
+	<h3><a href="[(#URL_ARTICLE|url_absolue)]">#_un_article:TITRE</a></h3>
 	[(#MODELE{emb,controls=oui,id_document,largeur=225,logo=#GET{logo},autobuffer=oui,infos=non,autoplay=oui,env})]
 	][(#EXTENSION|=={mp3}|non)
+	<h3>#_un_article:TITRE</h3>
 	[<a href="[(#URL_ARTICLE|url_absolue)]" class="lien_logo"[ title="(#_un_article:TITRE|attribut_html)"]>
 		<img src="(#GET{logo})" height="[(#LOGO_DOCUMENT|image_reduire{225}|extraire_attribut{height})]" width="[(#LOGO_DOCUMENT|image_reduire{225}|extraire_attribut{width})]" alt="" />
 	</a>]]
